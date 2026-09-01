@@ -58,9 +58,10 @@ function showQuestion() {
             if (index == currentQuestion.correct && !answered) {
                 score += 100;
                 scoreDisplay.textContent = "Score: " + score;
+                button.classList.add("correct");
                 answered = true;
             } else {
-                console.log("Wrong");
+                button.classList.add("wrong");
             }
         });
 

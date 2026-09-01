@@ -73,6 +73,16 @@ body {
     cursor: pointer;
 }
 
+#answers button.correct {
+    background-color: #4F8073;
+    color: #FBF8FF;
+}
+
+#answers button.wrong {
+    background-color: #762723;
+    color: #FBF8FF;
+}
+
 #nextButton {
     background-color: #681C5B;
     border: none;
