@@ -47,6 +47,8 @@ function showQuestion() {
     let answered = false;
     question.textContent = currentQuestion.question;
 
+    questionNumber.textContent = "Question " + (qIndex + 1) + " of " + questions.length;
+
     answers.innerHTML = "";
     currentQuestion.answers.forEach(function(answer, index) {
         const button = document.createElement("button");
@@ -65,5 +67,13 @@ function showQuestion() {
         answers.appendChild(button);
     });
 }
+
+
+//Next Button
+const nextButton = document.getElementById("nextButton");
+nextButton.addEventListener("click", function() {
+    qIndex ++;
+    showQuestion();
+})
 
 showQuestion();
