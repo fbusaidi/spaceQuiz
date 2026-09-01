@@ -41,10 +41,18 @@ const question = document.getElementById("question");
 const answers = document.getElementById("answers");
 const scoreDisplay = document.getElementById("score");
 
+function addScore(attempts) {
+    if (attempts == 0) return 100;
+    else if (attempts == 1) return 50;
+    else if (attempts == 2) return 25;
+    return 0;
+}
 
 function showQuestion() {
     const currentQuestion = questions[qIndex];
     let answered = false;
+    let attempts = 0;
+
     question.textContent = currentQuestion.question;
 
     questionNumber.textContent = "Question " + (qIndex + 1) + " of " + questions.length;
@@ -56,11 +64,12 @@ function showQuestion() {
 
         button.addEventListener("click", function() {
             if (index == currentQuestion.correct && !answered) {
-                score += 100;
+                score += addScore(attempts);
                 scoreDisplay.textContent = "Score: " + score;
                 button.classList.add("correct");
                 answered = true;
             } else {
+                attempts++;
                 button.classList.add("wrong");
             }
         });
