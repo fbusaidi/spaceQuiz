@@ -22,6 +22,9 @@ const questions = [
     }
 ];
 
+let score = 0;
+let qIndex = 0;
+
 // The transition from start page to the quiz page
 const startButton = document.getElementById("startButton");
 const startScreen = document.querySelector(".startScreen");
@@ -36,15 +39,29 @@ startButton.addEventListener("click", function() {
 const questionNumber = document.getElementById("questionNumber");
 const question = document.getElementById("question");
 const answers = document.getElementById("answers");
+const scoreDisplay = document.getElementById("score");
+
 
 function showQuestion() {
-    const currentQuestion = questions[0];
+    const currentQuestion = questions[qIndex];
+    let answered = false;
     question.textContent = currentQuestion.question;
 
     answers.innerHTML = "";
-    currentQuestion.answers.forEach(function(answer) {
+    currentQuestion.answers.forEach(function(answer, index) {
         const button = document.createElement("button");
         button.textContent = answer;
+
+        button.addEventListener("click", function() {
+            if (index == currentQuestion.correct && !answered) {
+                score += 100;
+                scoreDisplay.textContent = "Score: " + score;
+                answered = true;
+            } else {
+                console.log("Wrong");
+            }
+        });
+
         answers.appendChild(button);
     });
 }
