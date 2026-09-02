@@ -17,7 +17,7 @@ body {
 }
 
 .startScreen h1 {
-    font-size: 40px;
+    font-size: 35px;
     margin-bottom: 10px;
 }
 
@@ -26,7 +26,7 @@ body {
     margin-bottom: 30px;
 }
 
-#startButton {
+#enbutton, #arbutton {
     background-color: rgb(241, 231, 85);
     border: none;
     border-radius: 8px;
@@ -37,7 +37,7 @@ body {
     cursor: pointer;
 }
 
-#startButton:hover {
+#enbutton:hover, #arbutton:hover {
     background-color: #681C5B;
     color: #FBF8FF;
 }

@@ -1,39 +1,61 @@
-const questions = [
-    {
-        question: "What is the name of our planet?",
-        answers: [
-            "Earth", "Venus", "Mercury", "Jupiter"
-        ],
-        correct: 0
-    },
-    {
-        question: "What is the name of the closest planet to the sun?",
-        answers: [
-            "Earth", "Venus", "Mercury", "Jupiter"
-        ],
-        correct: 2
-    },
-    {
-        question: "What is the name of the hottest planet in our solar system?",
-        answers: [
-            "Earth", "Venus", "Mercury", "Jupiter"
-        ],
-        correct: 1
-    }
-];
-
-let score = 0;
-let qIndex = 0;
+const questions = {
+    english: [
+        {
+            question: "What is the name of our planet?",
+            answers: [
+                "Earth", "Venus", "Mercury", "Jupiter"
+            ],
+            correct: 0
+        },
+        {
+            question: "What is the name of the closest planet to the sun?",
+            answers: [
+                "Earth", "Venus", "Mercury", "Jupiter"
+            ],
+            correct: 2
+        },
+        {
+            question: "What is the name of the hottest planet in our solar system?",
+            answers: [
+                "Earth", "Venus", "Mercury", "Jupiter"
+            ],
+            correct: 1
+        }
+    ],
+    arabic: [
+        {
+            question: "ما هو اسم كوكبنا؟",
+            answers: ["الأرض", "الزهرة", "عطارد", "المشتري"],
+            correct: 0
+        }
+    ]
+};
 
 // The transition from start page to the quiz page
-const startButton = document.getElementById("startButton");
+let score = 0;
+let qIndex = 0;
+let selectedLang = "arabic";
+const enButton = document.getElementById("enButton");
+const arButton = document.getElementById("arButton");
 const startScreen = document.querySelector(".startScreen");
 const quizScreen = document.querySelector(".quizScreen");
 
-startButton.addEventListener("click", function() {
+enButton.addEventListener("click", function() {
+    selectedLang = "english";
+    startQuiz();
+});
+
+arButton.addEventListener("click", function() {
+    selectedLang = "arabic";
+    startQuiz();
+})
+
+function startQuiz() {
     startScreen.style.display = "none"; 
     quizScreen.style.display = "block";
-});
+
+    showQuestion();
+}
 
 // Displaying questions from the js
 const questionNumber = document.getElementById("questionNumber");
@@ -49,13 +71,13 @@ function addScore(attempts) {
 }
 
 function showQuestion() {
-    const currentQuestion = questions[qIndex];
+    const currentQuestion = questions[selectedLang][qIndex];
     let answered = false;
     let attempts = 0;
 
     question.textContent = currentQuestion.question;
 
-    questionNumber.textContent = "Question " + (qIndex + 1) + " of " + questions.length;
+    questionNumber.textContent = "Question " + (qIndex + 1) + " of " + questions[selectedLang].length;
 
     answers.innerHTML = "";
     currentQuestion.answers.forEach(function(answer, index) {
@@ -86,4 +108,3 @@ nextButton.addEventListener("click", function() {
     showQuestion();
 })
 
-showQuestion();
