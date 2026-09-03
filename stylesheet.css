@@ -74,7 +74,7 @@ body {
 }
 
 #answers button.correct {
-    background-color: #4F8073;
+    background-color: #007E62;
     color: #FBF8FF;
 }
 
@@ -92,3 +92,43 @@ body {
     margin-top: 25px;
     cursor: pointer;
 }
+
+.leaderBoard {
+    background-color: rgb(15, 15, 70);
+    padding: 50px;
+    width: 500px;
+    text-align: center;
+    display: none;
+}
+
+.leaderBoard h1 {
+    font-size: 30px;
+    margin-bottom: 30px;
+}
+
+#rankingHeader, #rankingRow {
+    display: grid;
+    grid-template-columns: 1fr 3fr 1fr;
+    align-items: center;
+}
+
+#rankingHeader {
+    background-color: #681C5B;
+    border-radius: 8px 8px 0 0;
+    color: #FBF8FF;
+}
+
+#rankingRow {
+    background-color: rgb(15, 15, 70);
+    border-bottom: 1px solid rgba(251, 248, 255, 0.15);
+}
+
+#rankingRow:hover {
+    background-color: rgb(35, 35, 100);
+}
+
+#rankingHeader p, #rankingRow p {
+    margin: 0px;
+    padding: 15px 10px;
+}
+

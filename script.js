@@ -1,36 +1,3 @@
-const questions = {
-    english: [
-        {
-            question: "What is the name of our planet?",
-            answers: [
-                "Earth", "Venus", "Mercury", "Jupiter"
-            ],
-            correct: 0
-        },
-        {
-            question: "What is the name of the closest planet to the sun?",
-            answers: [
-                "Earth", "Venus", "Mercury", "Jupiter"
-            ],
-            correct: 2
-        },
-        {
-            question: "What is the name of the hottest planet in our solar system?",
-            answers: [
-                "Earth", "Venus", "Mercury", "Jupiter"
-            ],
-            correct: 1
-        }
-    ],
-    arabic: [
-        {
-            question: "ما هو اسم كوكبنا؟",
-            answers: ["الأرض", "الزهرة", "عطارد", "المشتري"],
-            correct: 0
-        }
-    ]
-};
-
 // The transition from start page to the quiz page
 let score = 0;
 let qIndex = 0;
@@ -62,6 +29,7 @@ const questionNumber = document.getElementById("questionNumber");
 const question = document.getElementById("question");
 const answers = document.getElementById("answers");
 const scoreDisplay = document.getElementById("score");
+
 
 function addScore(attempts) {
     if (attempts == 0) return 100;
@@ -104,7 +72,20 @@ function showQuestion() {
 //Next Button
 const nextButton = document.getElementById("nextButton");
 nextButton.addEventListener("click", function() {
-    qIndex ++;
-    showQuestion();
+    if (qIndex < questions[selectedLang].length - 1) {
+        qIndex++;
+        showQuestion();
+    } else {
+        showLeaderboard();
+    }
 })
 
+//displaying leaderboard
+const leaderboardScreen = document.querySelector(".leaderboard");
+const myScore = document.getElementById("finalScore");
+
+function showLeaderboard() {
+    quizScreen.style.display = "none";
+    leaderboardScreen.style.display = "block";
+    myScore.textContent = score;
+}
