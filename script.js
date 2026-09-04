@@ -12,6 +12,8 @@ const leaderboardScreen = document.querySelector(".leaderboard");
 const myScore = document.getElementById("finalScore");
 const playerName = document.getElementById("playerName");
 const playAgain = document.getElementById("playAgain");
+const submitButton = document.getElementById("submit");
+
 
 enButton.addEventListener("click", function() {
     selectedLang = "english";
@@ -29,11 +31,17 @@ playAgain.addEventListener("click", function() {
 
 })
 
+// Submit button
+submitButton.addEventListener("click", function() {
+    showLeaderboard();
+})
+
 function startQuiz() {
     startScreen.style.display = "none"; 
     quizScreen.style.display = "block";
     score = 0;
     qIndex = 0;
+    scoreDisplay.textContent = "Score: " + score;
     player = playerName.value.trim();
 
     showQuestion();

@@ -93,6 +93,14 @@ body {
     cursor: pointer;
 }
 
+#submit {
+    background-color: #681C5B;
+    border: none;
+    border-radius: 12px;
+    color: #FBF8FF;
+    padding: 10px 10px;
+}
+
 .leaderBoard {
     background-color: rgb(15, 15, 70);
     padding: 50px;
