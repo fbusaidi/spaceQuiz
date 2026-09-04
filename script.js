@@ -2,10 +2,16 @@
 let score = 0;
 let qIndex = 0;
 let selectedLang = "arabic";
+let player = "";
+let leaderboardRank = [];
 const enButton = document.getElementById("enButton");
 const arButton = document.getElementById("arButton");
 const startScreen = document.querySelector(".startScreen");
 const quizScreen = document.querySelector(".quizScreen");
+const leaderboardScreen = document.querySelector(".leaderboard");
+const myScore = document.getElementById("finalScore");
+const playerName = document.getElementById("playerName");
+const playAgain = document.getElementById("playAgain");
 
 enButton.addEventListener("click", function() {
     selectedLang = "english";
@@ -17,9 +23,18 @@ arButton.addEventListener("click", function() {
     startQuiz();
 })
 
+playAgain.addEventListener("click", function() {
+    leaderboardScreen.style.display = "none";
+    startScreen.style.display = "block";
+
+})
+
 function startQuiz() {
     startScreen.style.display = "none"; 
     quizScreen.style.display = "block";
+    score = 0;
+    qIndex = 0;
+    player = playerName.value.trim();
 
     showQuestion();
 }
@@ -81,11 +96,39 @@ nextButton.addEventListener("click", function() {
 })
 
 //displaying leaderboard
-const leaderboardScreen = document.querySelector(".leaderboard");
-const myScore = document.getElementById("finalScore");
-
 function showLeaderboard() {
     quizScreen.style.display = "none";
     leaderboardScreen.style.display = "block";
+
+    leaderboardRank.push({
+        name: player, score: score
+    });
+
     myScore.textContent = score;
+    displayLeaderboard();
 }
+
+function displayLeaderboard() {
+    const ranking = document.getElementById("ranking");
+
+    ranking.innerHTML = `
+        <div id="rankingHeader">
+            <p>المركز</p>
+            <p>الاسم</p>
+            <p>النقاط</p>
+        </div>
+    `;
+
+    leaderboardRank.sort(function(a, b) {return b.score - a.score;})
+    .forEach(function(entry, index) {
+        ranking.innerHTML += `
+            <div id="rankingRow">
+                <p>${index + 1}</p>
+                <p>${entry.name}</p>
+                <p>${entry.score}</p>
+            </div>
+        `;
+    });
+}
+
+

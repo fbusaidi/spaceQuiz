@@ -83,7 +83,7 @@ body {
     color: #FBF8FF;
 }
 
-#nextButton {
+#nextButton, #playAgain {
     background-color: #681C5B;
     border: none;
     border-radius: 8px;
@@ -132,3 +132,6 @@ body {
     padding: 15px 10px;
 }
 
+#playerName {
+    margin-bottom: 20px;
+}
