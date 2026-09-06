@@ -31,6 +31,17 @@ playAgain.addEventListener("click", function() {
 
 })
 
+//shuffle answers
+function shuffleAnswers(question) {
+    const correctAnswer = question.answers[question.correct];
+
+    // Shuffle the answers
+    question.answers.sort(() => Math.random() - 0.5);
+
+    // Find where the correct answer moved
+    question.correct = question.answers.indexOf(correctAnswer);
+}
+
 // Submit button
 submitButton.addEventListener("click", function() {
     showLeaderboard();
@@ -44,6 +55,8 @@ function startQuiz() {
     scoreDisplay.textContent = "Score: " + score;
     player = playerName.value.trim();
 
+    questions.english.forEach(shuffleAnswers);
+    questions.arabic.forEach(shuffleAnswers);
     showQuestion();
 }
 
