@@ -26,6 +26,11 @@ body {
     margin-bottom: 30px;
 }
 
+#logo {
+    width: 55vh;
+    background-color: #FBF8FF;
+}
+
 #enbutton, #arbutton {
     background-color: rgb(241, 231, 85);
     border: none;
@@ -143,5 +148,7 @@ body {
 }
 
 #playerName {
+    height: 35px;
+    text-align: center;
     margin-bottom: 20px;
 }
