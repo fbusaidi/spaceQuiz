@@ -4,6 +4,9 @@ let qIndex = 0;
 let selectedLang = "arabic";
 let player = "";
 let leaderboardRank = [];
+let lastEntry = null;
+
+
 const enButton = document.getElementById("enButton");
 const arButton = document.getElementById("arButton");
 const startScreen = document.querySelector(".startScreen");
@@ -30,6 +33,22 @@ playAgain.addEventListener("click", function() {
     startScreen.style.display = "block";
 
 })
+
+// reset leaderboard daily
+function loadBoard() {
+    const today = new Date().toDateString();
+    const savedDate = localStorage.getItem("leaderboardDate");
+
+    if (savedDate === today) {
+        leaderboardRank = JSON.parse(localStorage.getItem("leaderboard")) || [];
+    } else {
+        leaderboardRank = [];
+        localStorage.removeItem("leaderboard");
+        localStorage.setItem("leaderboardDate", today);
+    }
+    
+}
+loadBoard();
 
 //shuffle answers
 function shuffleAnswers(question) {
@@ -121,9 +140,7 @@ function showLeaderboard() {
     quizScreen.style.display = "none";
     leaderboardScreen.style.display = "block";
 
-    leaderboardRank.push({
-        name: player, score: score
-    });
+    saveScore();
 
     myScore.textContent = score;
     displayLeaderboard();
@@ -141,9 +158,16 @@ function displayLeaderboard() {
     `;
 
     leaderboardRank.sort(function(a, b) {return b.score - a.score;})
+    .slice(0, 10)
     .forEach(function(entry, index) {
+        let highlight = "";
+
+        if (entry === lastEntry) {
+            highlight = "myRanking";
+        }
+        
         ranking.innerHTML += `
-            <div id="rankingRow">
+            <div class ="rankingRow ${highlight}">
                 <p>${index + 1}</p>
                 <p>${entry.name}</p>
                 <p>${entry.score}</p>
@@ -152,4 +176,15 @@ function displayLeaderboard() {
     });
 }
 
+// save score to local storage
+function saveScore() {
+    const today = new Date().toDateString();
+    const entry = {name: player, score: score};
+    
+    leaderboardRank.push(entry);
+    lastEntry = entry;
 
+    localStorage.setItem("leaderboard", JSON.stringify(leaderboardRank));
+    localStorage.setItem("leaderboardDate", today);
+
+}

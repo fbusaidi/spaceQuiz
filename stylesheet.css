@@ -114,7 +114,7 @@ body {
     margin-bottom: 30px;
 }
 
-#rankingHeader, #rankingRow {
+#rankingHeader, .rankingRow {
     display: grid;
     grid-template-columns: 1fr 3fr 1fr;
     align-items: center;
@@ -126,16 +126,18 @@ body {
     color: #FBF8FF;
 }
 
-#rankingRow {
+.rankingRow.myRanking {
+    background-color: rgb(241, 231, 85);
+    color: black;
+    font-style: italic;
+}
+
+.rankingRow {
     background-color: rgb(15, 15, 70);
     border-bottom: 1px solid rgba(251, 248, 255, 0.15);
 }
 
-#rankingRow:hover {
-    background-color: rgb(35, 35, 100);
-}
-
-#rankingHeader p, #rankingRow p {
+#rankingHeader p, .rankingRow p {
     margin: 0px;
     padding: 15px 10px;
 }
