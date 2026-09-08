@@ -26,11 +26,6 @@ body {
     margin-bottom: 30px;
 }
 
-#logo {
-    width: 55vh;
-    background-color: #FBF8FF;
-}
-
 #enbutton, #arbutton {
     background-color: rgb(241, 231, 85);
     border: none;
@@ -50,9 +45,29 @@ body {
 .quizScreen {
     background-color: rgb(15, 15, 70);
     width: 500px;
-    padding: 50px;
+    padding: 50px 20px;
     text-align: center;
     display: none;
+}
+
+.quizHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+
+#logo {
+    width: 55vh;
+    background-color: #FBF8FF;
+    border: none;
+    border-radius: 8px;
+}
+
+.headerRight {
+    display: flex;
+    align-items: center;
+    gap: 20px;
 }
 
 #questionNumber {
@@ -103,7 +118,7 @@ body {
     border: none;
     border-radius: 12px;
     color: #FBF8FF;
-    padding: 10px 10px;
+    padding: 10px 20px;
 }
 
 .leaderBoard {
