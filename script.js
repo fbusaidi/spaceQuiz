@@ -71,7 +71,11 @@ function startQuiz() {
     quizScreen.style.display = "block";
     score = 0;
     qIndex = 0;
-    scoreDisplay.textContent = "Score: " + score;
+    if (selectedLang === "english") {
+        scoreDisplay.textContent = "Score: " + score;
+    } else {
+        scoreDisplay.textContent = "النتيجة: " + score;
+    }
     player = playerName.value.trim();
 
     questions.english.forEach(shuffleAnswers);
@@ -100,7 +104,11 @@ function showQuestion() {
 
     question.textContent = currentQuestion.question;
 
-    questionNumber.textContent = "Question " + (qIndex + 1) + " of " + questions[selectedLang].length;
+    if (selectedLang === "english") {
+        questionNumber.textContent = "Question " + (qIndex + 1) + " of " + questions[selectedLang].length;
+    } else {
+        questionNumber.textContent = " السؤال " + (qIndex + 1) + " من " + questions[selectedLang].length;
+    }
 
     answers.innerHTML = "";
     currentQuestion.answers.forEach(function(answer, index) {

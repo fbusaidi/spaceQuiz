@@ -144,6 +144,13 @@ const questions = {
                 "Yes, it is Jupiter", "No, they are Venus and Sirius", "Yes, it is Venus", "No, they are Mercury and Mars"
             ],
             correct: 2
+        },
+        {
+            question: "Who is the first person to travel to space?",
+            answers: [
+                "Neil Armstrong", "Yuri Gagarin", "George Jetson", "Issac Newton"
+            ],
+            correct: 1
         }
     ],
     arabic: [
@@ -281,6 +288,13 @@ const questions = {
                 "لا، إنهما عطارد والمريخ"
             ],
             correct: 2
+        },
+        {
+            question: "من هو أول شخص يسافر إلى الفضاء؟",
+            answers: [
+                "نيل أرمسترونغ", "يوري غاغارين", "جورج جيتسون", "إسحاق نيوتن"
+            ],
+            correct: 1
         }
     ]
 };
