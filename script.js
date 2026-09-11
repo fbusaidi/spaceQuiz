@@ -1,10 +1,11 @@
-// The transition from start page to the quiz page
 let score = 0;
 let qIndex = 0;
 let selectedLang = "arabic";
 let player = "";
 let leaderboardRank = [];
 let lastEntry = null;
+let timeLeft = 60;
+let timer;
 
 
 const enButton = document.getElementById("enButton");
@@ -63,9 +64,11 @@ function shuffleAnswers(question) {
 
 // Submit button
 submitButton.addEventListener("click", function() {
+    clearInterval(timer);
     showLeaderboard();
 })
 
+// The transition from start page to the quiz page
 function startQuiz() {
     startScreen.style.display = "none"; 
     quizScreen.style.display = "block";
@@ -83,6 +86,30 @@ function startQuiz() {
     questions.english.forEach(shuffleAnswers);
     questions.arabic.forEach(shuffleAnswers);
     showQuestion();
+    startTimer();
+}
+
+//create timer 
+function startTimer() {
+    timeLeft = 30;
+    if (selectedLang === "english") {
+        document.getElementById("timer").textContent = "Time: " + timeLeft;
+    } else {
+        document.getElementById("timer").textContent = "الوقت: " + timeLeft;
+    } 
+    
+    timer = setInterval(function() {
+        timeLeft--;
+        if (selectedLang === "english") {
+            document.getElementById("timer").textContent = "Time: " + timeLeft;
+        } else {
+            document.getElementById("timer").textContent = "الوقت: " + timeLeft;
+        } 
+        if (timeLeft <= 0) {
+            clearInterval(timer);
+            showLeaderboard();
+        }
+    }, 1000);
 }
 
 // Displaying questions from the js
