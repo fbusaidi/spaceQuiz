@@ -77,6 +77,8 @@ function startQuiz() {
         scoreDisplay.textContent = "النتيجة: " + score;
     }
     player = playerName.value.trim();
+    playerName.value = "";
+    localStorage.removeItem("playerName");
 
     questions.english.forEach(shuffleAnswers);
     questions.arabic.forEach(shuffleAnswers);
