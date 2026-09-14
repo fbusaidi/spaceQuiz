@@ -149,6 +149,7 @@ function showQuestion() {
                 scoreDisplay.textContent = "Score: " + score;
                 button.classList.add("correct");
                 answered = true;
+                disableAnswers();
             } else {
                 attempts++;
                 button.classList.add("wrong");
@@ -156,6 +157,13 @@ function showQuestion() {
         });
 
         answers.appendChild(button);
+    });
+}
+
+function disableAnswers() {
+    const buttons = answers.querySelectorAll("button");
+    buttons.forEach(function(btn) {
+        btn.disabled = true;
     });
 }
 
