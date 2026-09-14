@@ -1,3 +1,4 @@
+// Code by Falak Al Busaidi for PDO Knowledge World
 let score = 0;
 let qIndex = 0;
 let selectedLang = "arabic";
