@@ -5,6 +5,7 @@ let selectedLang = "arabic";
 let player = "";
 let leaderboardRank = [];
 let lastEntry = null;
+let saved = false;
 let timeLeft = 60;
 let timer;
 
@@ -77,6 +78,7 @@ function startQuiz() {
     quizScreen.style.display = "block";
     score = 0;
     qIndex = 0;
+    saved = false;
     if (selectedLang === "english") {
         scoreDisplay.textContent = "Score: " + score;
         questions.english.forEach(shuffleAnswers);
@@ -210,7 +212,10 @@ function showLeaderboard() {
     quizScreen.style.display = "none";
     leaderboardScreen.style.display = "block";
 
-    saveScore();
+    if (!saved) {
+        saveScore();
+        saved = true;
+    }
 
     myScore.textContent = score;
     displayLeaderboard();
