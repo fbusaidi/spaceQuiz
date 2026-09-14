@@ -17,6 +17,7 @@ const myScore = document.getElementById("finalScore");
 const playerName = document.getElementById("playerName");
 const playAgain = document.getElementById("playAgain");
 const submitButton = document.getElementById("submit");
+const timeBonus = document.getElementById("timeBonus");
 
 
 enButton.addEventListener("click", function() {
@@ -143,6 +144,12 @@ function showQuestion() {
         button.addEventListener("click", function() {
             if (index == currentQuestion.correct && !answered) {
                 score += addScore(attempts);
+                if (attempts == 0) {
+                    timeLeft += 1;
+                    timeBonus.classList.remove("show");
+                    void timeBonus.offsetWidth;
+                    timeBonus.classList.add("show");
+                }
                 scoreDisplay.textContent = "Score: " + score;
                 button.classList.add("correct");
                 answered = true;
