@@ -109,6 +109,30 @@ body {
     animation: bonusAnimation 1s ease-out;
 }
 
+#scoreBox {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: fit-content;
+    margin: 0 auto;
+}
+
+#scoreBonus {
+    position: absolute;
+    right: -35px;
+    top: -5px;
+    color: #F1E755;
+    font-size: 18px;
+    font-weight: bold;
+    opacity: 0;
+    pointer-events: none;
+}
+
+#scoreBonus.show {
+    animation: bonusAnimation 1s ease-out;
+}
+
 @keyframes bonusAnimation {
     0% {
         opacity: 0;

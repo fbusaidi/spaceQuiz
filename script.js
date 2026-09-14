@@ -18,6 +18,7 @@ const playerName = document.getElementById("playerName");
 const playAgain = document.getElementById("playAgain");
 const submitButton = document.getElementById("submit");
 const timeBonus = document.getElementById("timeBonus");
+const scoreBonus = document.getElementById("scoreBonus");
 
 
 enButton.addEventListener("click", function() {
@@ -144,12 +145,7 @@ function showQuestion() {
         button.addEventListener("click", function() {
             if (index == currentQuestion.correct && !answered) {
                 score += addScore(attempts);
-                if (attempts == 0) {
-                    timeLeft += 1;
-                    timeBonus.classList.remove("show");
-                    void timeBonus.offsetWidth;
-                    timeBonus.classList.add("show");
-                }
+                animation(attempts);
                 scoreDisplay.textContent = "Score: " + score;
                 button.classList.add("correct");
                 answered = true;
@@ -163,6 +159,31 @@ function showQuestion() {
     });
 }
 
+function animation(attempt) {
+    if (attempt == 0) {
+        timeLeft += 1;
+        timeBonus.classList.remove("show");
+        void timeBonus.offsetWidth;
+        timeBonus.classList.add("show");
+
+        scoreBonus.textContent = "+100";
+        scoreAnimation();
+    }
+    else if (attempt == 1) {
+        scoreBonus.textContent = "+50";
+        scoreAnimation();
+    }
+    else if (attempt == 2) {
+        scoreBonus.textContent = "+25";
+        scoreAnimation();
+    }
+}
+
+function scoreAnimation() {
+    scoreBonus.classList.remove("show");
+    void scoreBonus.offsetWidth;
+    scoreBonus.classList.add("show");
+}
 
 //Next Button
 const nextButton = document.getElementById("nextButton");
