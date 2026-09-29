@@ -34,12 +34,7 @@ git clone https://github.com/fbusaidi/spaceQuiz.git
 cd space-quiz
 ```
 
-Open `index.html` in your browser. To run it from a local server instead (optional):
-
-```bash
-python3 -m http.server 8000
-# then visit http://localhost:8000
-```
+Open `index.html` in your browser. To run it from a local server instead or follow this link:  https://fbusaidi.github.io/spaceQuiz/
 
 ## Project structure
 
