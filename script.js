@@ -6,7 +6,7 @@ let player = "";
 let leaderboardRank = [];
 let lastEntry = null;
 let saved = false;
-let timeLeft = 60;
+let timeLeft;
 let timer;
 
 
@@ -98,7 +98,7 @@ function startQuiz() {
 
 //create timer 
 function startTimer() {
-    timeLeft = 30;
+    timeLeft = 60;
     if (selectedLang === "english") {
         document.getElementById("timer").textContent = "Time: " + timeLeft;
     } else {
